@@ -12,13 +12,18 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip --no-cache-dir install \
        	ipykernel \
-		scipy \
+	scipy \
+	pandas \
+	scikit-learn \
+	Pillow \
         jupyter \
         matplotlib \
+	keras \
         && \
     python -m ipykernel.kernelspec
 
 COPY jupyter_notebook_config.py /root/.jupyter/
+COPY keras.json /root/.keras/
 
 # Jupyter has issues with being run directly:
 # https://github.com/ipython/ipython/issues/7062
